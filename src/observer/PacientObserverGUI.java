@@ -9,10 +9,12 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import domain.Symptom;
+import observer.Covid19Pacient;
+import java.util.Iterator;
 
 import javax.swing.JLabel;
 
-public class PacientObserverGUI extends JFrame{
+public class PacientObserverGUI extends JFrame implements Observer {
 
 	private JPanel contentPane;
 	private final JLabel symptomLabel = new JLabel("");
@@ -20,7 +22,7 @@ public class PacientObserverGUI extends JFrame{
 	/**
 	 * Create the frame.
 	 */
-	public PacientObserverGUI() {
+	public PacientObserverGUI(Observable obs) {
 		setTitle("Pacient symptoms");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(650, 100, 200, 300);
@@ -34,4 +36,21 @@ public class PacientObserverGUI extends JFrame{
 		this.setVisible(true);
 	}
 
+	@Override
+	public void update(Observable	o,	Object	arg)
+	{
+		Covid19Pacient	p=(Covid19Pacient)o;
+		String	s="<html>	Pacient: <b>"+p.getName()+"</b>	<br>";
+		s=s+"Covid impact:	<b>"+p.covidImpact()+"</b><br><br>";
+		s=s+" _____________________	<br>	Symptoms:	<br>";
+		Iterator<Symptom> i = p.getSymptoms();
+		Symptom	p2;
+		while (i.hasNext())
+		{
+			p2=i.next();
+			s=s+ "		- " +	p2.toString()+",	"+p.getWeight(p2)+"<br>";
+		}
+		s=s+"</html>";
+		symptomLabel.setText(s);
+	}
 }

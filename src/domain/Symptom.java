@@ -5,7 +5,13 @@ public class Symptom {
 	private int covidImpact;
 	private int severityIndex;
 
-	public Symptom(String name, int covidImpact, int severityIndex) {
+	private static Symptom instance;
+	public static Symptom getInstance(String name, int covidImpact, int severityIndex)
+	{
+		return instance == null ? new Symptom(name, covidImpact, severityIndex) : instance;
+	}
+
+	protected Symptom(String name, int covidImpact, int severityIndex) {
 		this.name = name;
 		this.covidImpact = covidImpact;
 		this.severityIndex = severityIndex;
