@@ -34,6 +34,7 @@ public class PacientObserverGUI extends JFrame implements Observer {
 		contentPane.add(symptomLabel);
 		symptomLabel.setText("Still no symptoms");
 		this.setVisible(true);
+		obs.addObserver(this);
 	}
 
 	@Override

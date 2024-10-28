@@ -49,11 +49,11 @@ public class PacientSymptomGUI extends JFrame {
 		symptomComboBox.addItem(SymptomFactory.createSymptom("astenia"));
 		symptomComboBox.addItem(SymptomFactory.createSymptom("expectoracion"));
 		
-		symptomComboBox.addItem(new Symptom("disnea",100,3));
-		symptomComboBox.addItem(new Symptom("dolor de garganta",100,3));
-		symptomComboBox.addItem(new Symptom("cefalea",100,3));
-		symptomComboBox.addItem(new Symptom("mialgia",100,3));
-		symptomComboBox.addItem(new Symptom("escalofríos",100,3));
+		symptomComboBox.addItem(SymptomFactory.createSymptom("disnea"));
+		symptomComboBox.addItem(SymptomFactory.createSymptom("dolor de garganta"));
+		symptomComboBox.addItem(SymptomFactory.createSymptom("cefalea"));
+		symptomComboBox.addItem(SymptomFactory.createSymptom("mialgia"));
+		symptomComboBox.addItem(SymptomFactory.createSymptom("escalofríos"));
 
 		symptomComboBox.addItem(SymptomFactory.createSymptom("náuseas o vómitos"));
 		symptomComboBox.addItem(SymptomFactory.createSymptom("congestión nasal"));
@@ -118,5 +118,7 @@ public class PacientSymptomGUI extends JFrame {
 
 		contentPane.add(labelPacient);
 		this.setVisible(true);
+
+
 	}
 }
