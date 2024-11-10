@@ -5,16 +5,20 @@ import java.util.List;
 import java.util.Set;
 import java.util.Vector;
 
+import adapter.InvertedIterator;
 import domain.Symptom;
 
 public class Covid19PacientIterator implements Iterator{
 	List<Symptom> symptoms=new Vector<Symptom>();
 	int position=0;
+	int invertedPosition;
 
 	public Covid19PacientIterator(Set<Symptom> s) {
 		Iterator<Symptom> i=s.iterator();
 		while (i.hasNext())
 			symptoms.add(i.next());
+
+		invertedPosition = symptoms.size()-1;
 	}
 
 	@Override
@@ -28,5 +32,4 @@ public class Covid19PacientIterator implements Iterator{
 		position++;
 		return symptom;
 	}
-
 }
